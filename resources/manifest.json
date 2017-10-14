@@ -1,0 +1,31 @@
+{
+    "manifest_version": 2,
+    "name": "Wex.io Exchange Ticker",
+    "version": "0.2.0",
+    "short_name": "Wex Ticker",
+    "description": "The best way to track cryptocurrency price at Wex exchange",
+    "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
+    "permissions": [
+        "tabs",
+        "http://*/*",
+        "https://*/*"
+    ],
+    "author": "CoinWizard Team",
+    "homepage_url": "https://coinwizard.me/",
+    "icons": {
+        "114": "/images/kuna_114.png",
+        "128": "/images/kuna_128.png",
+        "144": "/images/kuna_144.png",
+        "258": "/images/kuna_258.png"
+    },
+    "background": {
+        "page": "/views/background.html"
+    },
+    "browser_action": {
+        "default_icon": {
+            "144": "/images/kuna_144.png"
+        },
+        "default_popup": "/views/popup.html",
+        "default_title": "Wex Ticker"
+    }
+}
