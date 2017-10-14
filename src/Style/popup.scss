@@ -1,0 +1,51 @@
+@import "fonts";
+@import "variable";
+@import "cleaner";
+
+html {
+    width: 300px;
+    max-width: 300px;
+}
+
+body {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    font-size: 16px;
+    background: white;
+    color: rgb(38, 38, 38);
+    font-family: $font;
+}
+
+.created-by {
+    display: none;
+    position: fixed;
+    font-size: 10px;
+    right: 8px;
+    bottom: 4px;
+    z-index: 1000;
+    font-weight: 100;
+    color: rgb(220, 220, 220);
+
+    a {
+        display: inline-block;
+    }
+
+    &__logo {
+        height: 12px;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 0 0 4px;
+    }
+}
+
+.loading {
+    width: 100%;
+    line-height: 60px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 100;
+    letter-spacing: 0.8px;
+}
+
+@import "screens/home";
