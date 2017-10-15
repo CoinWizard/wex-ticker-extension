@@ -1,6 +1,5 @@
-import Axios, { AxiosInstance, AxiosPromise, AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
-import { TickerInterface } from 'Core/Interfaces/TickerInterface';
-import { WexTickerInterface } from "Core/Wex/WexTickerInterface";
+import Axios, {AxiosInstance, AxiosPromise, AxiosResponse, AxiosError, AxiosRequestConfig} from 'axios';
+import {WexTickerInterface} from "Core/Wex/WexTickerInterface";
 
 export class ApiClient {
 
@@ -15,15 +14,13 @@ export class ApiClient {
     extractTickers(tickerKeys: Array<string>): AxiosPromise {
 
         const onSuccess = (response: AxiosResponse) => {
-
-            const { data } = response;
-
-            return data.ticker;
+            console.log(response.data);
+            return response.data;
         };
 
         const onError = (error: AxiosError) => {
 
-            const { response = null } = error;
+            const {response = null} = error;
 
             console.error(error);
             console.error(response);

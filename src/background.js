@@ -5,6 +5,7 @@ import ExtensionPlatform from 'Core/Extension';
 import {Events} from 'Core/EventProtocol/Events';
 import WexApiClient from 'Core/Wex/ApiClient';
 import WexTickerMap from 'Core/Wex/TickerMap';
+import Numeral from 'numeral';
 
 
 const TickerStorage = {};
@@ -30,22 +31,20 @@ _.each(WexTickerMap, (ticker) => {
 
 let currentTickerKey = 'btc_usd';
 
-const updateTicker = (wexTickerData) => {
-    const currentTicker = TickerStorage[key];
+const updateTicker = (wexTickerKey, wexTickerData) => {
+    const currentTicker = TickerStorage[wexTickerKey];
 
     if (!currentTicker) {
         return;
     }
 
     currentTicker.price = wexTickerData.last;
-    currentTicker.volume_base = wexTickerData.vol;
-    currentTicker.volume_quote = wexTickerData.price;
+    currentTicker.volume_base = wexTickerData.vol_cur;
+    currentTicker.volume_quote = wexTickerData.vol;
 
     currentTicker.OHLC = {
         high: wexTickerData.high,
-        low: wexTickerData.low,
-        open: 0,
-        close: 0
+        low: wexTickerData.low
     };
 
     currentTicker.depth = {
@@ -53,7 +52,7 @@ const updateTicker = (wexTickerData) => {
         ask: wexTickerData.buy
     };
 
-    TickerStorage[key] = currentTicker;
+    TickerStorage[wexTickerKey] = currentTicker;
 
     ExtensionPlatform.getExtension().extension.sendMessage({
         event: Events.UPDATE_TICKER,
@@ -61,9 +60,51 @@ const updateTicker = (wexTickerData) => {
     });
 };
 
+/**
+ * @param price
+ * @return {string}
+ */
+const formatTickerPrice = (price) => {
+    let priceNumeral = Numeral(price);
+    if (price < 1) {
+        return '' + priceNumeral.format('0.[00]');
+    } else if (price < 100) {
+        return '' + priceNumeral.format('0,0.[0]');
+    } else if (price < 1000) {
+        return '' + priceNumeral.format('0,0.[0]');
+    } else if (price < 10000) {
+        return '' + priceNumeral.format('0.0a');
+    } else if (price < 1000000) {
+        return '' + priceNumeral.format('0a');
+    }
+
+    return '' + price;
+};
+
+const updateBudgetTexts = () => {
+    const currentTicker = TickerStorage[currentTickerKey];
+    if (currentTicker) {
+        ExtensionPlatform.getExtension().browserAction.setBadgeText({
+            text: formatTickerPrice(currentTicker.price)
+        });
+
+        ExtensionPlatform.getExtension().browserAction.setBadgeBackgroundColor({
+            color: '#778bc7'
+        });
+
+        ExtensionPlatform.getExtension().browserAction.setTitle({
+            title: 'Wex Ticker: ' +
+            `${currentTicker.baseCurrency} / ${currentTicker.quoteCurrency}` +
+            ` - ${Numeral(currentTicker.price).format('0,0.[0000]')}`
+        });
+    }
+};
+
 const tickerUpdater = () => {
+    console.log(_.keys(TickerStorage));
     WexApiClient.extractTickers(_.keys(TickerStorage)).then((wexTickers) => {
-        _.each(tickers, (wexTicker, key) => updateTicker(wexTicker));
+        _.each(wexTickers, (wexTicker, key) => updateTicker(key, wexTicker));
+        updateBudgetTexts();
     });
 };
 
@@ -97,6 +138,7 @@ const extensionEventListener = (request, sender, sendResponse) => {
             sendResponse({
                 currentTicker: currentTickerKey
             });
+            updateBudgetTexts();
             break;
         }
 

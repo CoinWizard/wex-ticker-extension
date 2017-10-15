@@ -3,7 +3,7 @@ import uuidv4 from 'uuid/v4';
 import localStorage from 'local-storage';
 
 const USER_UUID_KEY = 'USER_UUID';
-const GA_IDENTIFY = 'UA-64948076-3';
+const GA_IDENTIFY = 'UA-64948076-5';
 
 let visitorUUID = localStorage.get(USER_UUID_KEY);
 
