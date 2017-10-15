@@ -66,7 +66,7 @@ const updateTicker = (wexTickerKey, wexTickerData) => {
  */
 const formatTickerPrice = (price) => {
     let priceNumeral = Numeral(price);
-    if (price < 1) {
+    if (price < 10) {
         return '' + priceNumeral.format('0.[00]');
     } else if (price < 100) {
         return '' + priceNumeral.format('0,0.[0]');
@@ -86,10 +86,6 @@ const updateBudgetTexts = () => {
     if (currentTicker) {
         ExtensionPlatform.getExtension().browserAction.setBadgeText({
             text: formatTickerPrice(currentTicker.price)
-        });
-
-        ExtensionPlatform.getExtension().browserAction.setBadgeBackgroundColor({
-            color: '#778bc7'
         });
 
         ExtensionPlatform.getExtension().browserAction.setTitle({
@@ -156,6 +152,10 @@ const initBackground = () => {
 
     tickerUpdater();
     setInterval(tickerUpdater, 30000);
+
+    ExtensionPlatform.getExtension().browserAction.setBadgeBackgroundColor({
+        color: '#6f7a9a'
+    });
 };
 
 document.addEventListener('DOMContentLoaded', initBackground);
