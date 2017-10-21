@@ -9,13 +9,15 @@ html {
 
 body {
     width: 300px;
-    height: 200px;
+    height: 255px;
     overflow: hidden;
     font-size: 16px;
     background: white;
-    color: rgb(38, 38, 38);
+    color: $color-dark-gray;
     font-family: $font;
 }
+
+@import "parts/header";
 
 .created-by {
     display: none;
@@ -46,6 +48,10 @@ body {
     font-size: 18px;
     font-weight: 100;
     letter-spacing: 0.8px;
+}
+
+.application {
+    padding: 0;
 }
 
 @import "screens/home";

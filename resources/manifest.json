@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "Wex Exchange Ticker",
-    "version": "0.1.1",
-    "short_name": "Wex Ticker",
+    "name": "WEX Exchange ticker",
+    "version": "0.2.0",
+    "short_name": "WEX Ticker",
     "description": "The best way to track Bitcoin, Litecoin and other cryptocurrencies price at Wex exchange",
     "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
     "permissions": [
@@ -23,6 +23,6 @@
             "128": "/images/wex_128.png"
         },
         "default_popup": "/views/popup.html",
-        "default_title": "Wex Exchange Ticker"
+        "default_title": "WEX Exchange ticker"
     }
 }

@@ -42,18 +42,6 @@ class HomeScreen extends React.Component {
         this.setState({selectMode: false});
     };
 
-
-    getDropDownOptions() {
-        const {tickers = []} = this.props;
-
-        return _.map(tickers, (trc) => {
-            return {
-                value: trc.key,
-                label: `${trc.baseCurrency}/${trc.quoteCurrency}`
-            };
-        });
-    }
-
     drawTickerList() {
         const {tickers = [], currentTickerKey = null} = this.props;
         const {selectMode = false} = this.state;
@@ -89,8 +77,8 @@ class HomeScreen extends React.Component {
 
         const currentTicker = _.find(tickers, {key: currentTickerKey});
 
-        const currentTickerLabelProps = {
-            className: "current-ticker-label",
+        const currentMarketLabelProps = {
+            className: "header__current-market",
             onClick: () => {
                 this.setState({selectMode: true});
             }
@@ -99,15 +87,20 @@ class HomeScreen extends React.Component {
         return (
             <div>
                 {this.drawTickerList()}
-                {
-                    currentTicker && (
-                        <div {...currentTickerLabelProps}>
-                            <label className="current-ticker-label__item">
+
+                <header className="header">
+                    <a href="https://wex.nz/" target="_blank" className="header__logo" alt="WEX.nz Exchange">
+                        <img className="header__logo-img" src="/images/wex-logo.png"/>
+                    </a>
+                    {
+                        currentTicker && (
+                            <label {...currentMarketLabelProps}>
                                 {currentTicker.baseCurrency} / {currentTicker.quoteCurrency}
                             </label>
-                        </div>
-                    )
-                }
+                        )
+                    }
+                </header>
+
                 <CurrentTickerView ticker={currentTicker}/>
             </div>
         );

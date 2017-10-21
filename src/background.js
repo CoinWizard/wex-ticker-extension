@@ -91,7 +91,7 @@ const updateBudgetTexts = () => {
         ExtensionPlatform.getExtension().browserAction.setTitle({
             title: 'Wex Ticker: ' +
             `${currentTicker.baseCurrency} / ${currentTicker.quoteCurrency}` +
-            ` - ${Numeral(currentTicker.price).format('0,0.[0000]')}`
+            ` - ${Numeral(currentTicker.price).format(currentTicker.format)}`
         });
     }
 };
