@@ -27,7 +27,7 @@ class CurrentTickerView extends React.Component<CurrentTickerViewPropsInterface,
 
                     <div className="current-ticker__market">
                         <a
-                            href={`https://wex.nz/exchange/${ticker.key}`}
+                            href={`https://wex.nz/exchange/${ticker.key}?ref=coinwizard-wex-ticker`}
                             className="current-ticker__market-link"
                             target="_blank"
                         >Market {ticker.baseCurrency}/{ticker.quoteCurrency}</a>

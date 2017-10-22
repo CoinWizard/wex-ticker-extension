@@ -89,7 +89,11 @@ class HomeScreen extends React.Component {
                 {this.drawTickerList()}
 
                 <header className="header">
-                    <a href="https://wex.nz/" target="_blank" className="header__logo" alt="WEX.nz Exchange">
+                    <a href="https://wex.nz/?ref=coinwizard-wex-ticker"
+                       target="_blank"
+                       className="header__logo"
+                       title="WEX.nz Exchange"
+                    >
                         <img className="header__logo-img" src="/images/wex-logo.png"/>
                     </a>
                     {
