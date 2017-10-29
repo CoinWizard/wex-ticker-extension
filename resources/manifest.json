@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Ticker for WEX exchange",
-    "version": "0.2.1",
+    "version": "0.2.3",
     "short_name": "Ticker for WEX",
     "description": "The best way to track Bitcoin, Litecoin and other cryptocurrencies price at Wex exchange",
     "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",

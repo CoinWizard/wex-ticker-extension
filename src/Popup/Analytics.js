@@ -1,9 +1,16 @@
 import UniversalAnalytics from 'universal-analytics';
 import uuidv4 from 'uuid/v4';
 import localStorage from 'local-storage';
+import Extension from 'Core/Extension';
 
 const USER_UUID_KEY = 'USER_UUID';
-const GA_IDENTIFY = 'UA-64948076-5';
+
+const GA_IDENTIFY = 'UA-64948076-3';
+const VERSION = Extension.getManifest().version;
+const APPLICATION_NAME = 'WEX';
+const DISPLAYED_VERSION = `${APPLICATION_NAME} ${VERSION}`;
+
+const AnaliticsOptions = {};
 
 let visitorUUID = localStorage.get(USER_UUID_KEY);
 
@@ -13,6 +20,6 @@ if (!visitorUUID) {
 }
 
 const visitor = UniversalAnalytics(GA_IDENTIFY, visitorUUID, {https: true});
-visitor.pageview("/ext/popup").send();
+visitor.screenview("WEX / Popup", APPLICATION_NAME, DISPLAYED_VERSION).send();
 
 export default visitor;
