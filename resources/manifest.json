@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "WEX Exchange ticker",
+    "name": "Ticker for WEX exchange",
     "version": "0.2.1",
-    "short_name": "WEX Ticker",
+    "short_name": "Ticker for WEX",
     "description": "The best way to track Bitcoin, Litecoin and other cryptocurrencies price at Wex exchange",
     "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
     "permissions": [
@@ -11,7 +11,6 @@
         "https://*/*"
     ],
     "author": "CoinWizard Team",
-    "homepage_url": "https://coinwizard.me/?ref=wex-ticker",
     "icons": {
         "128": "/images/wex_128.png"
     },
