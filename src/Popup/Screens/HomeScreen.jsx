@@ -10,8 +10,7 @@ import {Events} from 'Core/EventProtocol/Events';
 import {TickerActions} from 'Popup/Actions/TickerActions';
 import CurrentTickerView from 'Popup/Screens/HomeViews/CurrentTickerView';
 
-const currentExtension = ExtensionPlatform.getExtension().extension;
-
+const currentExtension = ExtensionPlatform.getExtension().runtime;
 
 class HomeScreen extends React.Component {
 

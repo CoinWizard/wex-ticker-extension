@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Ticker for WEX exchange",
-    "version": "0.2.3",
+    "version": "0.3.0",
     "short_name": "Ticker for WEX",
     "description": "The best way to track Bitcoin, Litecoin and other cryptocurrencies price at Wex exchange",
     "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
@@ -17,6 +17,25 @@
     "background": {
         "page": "/views/background.html"
     },
+    "applications": {
+        "gecko": {
+            "id": "info@coinwizard.me",
+            "strict_min_version": "43.0"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ],
+            "js": [
+                "/js/pageContent.js"
+            ],
+            "run_at": "document_start",
+            "all_frames": true
+        }
+    ],
     "browser_action": {
         "default_icon": {
             "128": "/images/wex_128.png"

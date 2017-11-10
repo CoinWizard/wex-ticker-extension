@@ -54,7 +54,7 @@ const updateTicker = (wexTickerKey, wexTickerData) => {
 
     TickerStorage[wexTickerKey] = currentTicker;
 
-    ExtensionPlatform.getExtension().extension.sendMessage({
+    ExtensionPlatform.getExtension().runtime.sendMessage({
         event: Events.UPDATE_TICKER,
         ticker: currentTicker
     });
@@ -148,7 +148,7 @@ const extensionEventListener = (request, sender, sendResponse) => {
 };
 
 const initBackground = () => {
-    ExtensionPlatform.getExtension().extension.onMessage.addListener(extensionEventListener);
+    ExtensionPlatform.getExtension().runtime.onMessage.addListener(extensionEventListener);
 
     tickerUpdater();
     setInterval(tickerUpdater, 30000);

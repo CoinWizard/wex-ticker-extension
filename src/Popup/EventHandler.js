@@ -6,7 +6,7 @@ import {Events} from 'Core/EventProtocol/Events';
 
 import {TickerActions} from 'Popup/Actions/TickerActions';
 
-ExtensionPlatform.getExtension().extension.onMessage.addListener((request, sender, sendResponse) => {
+ExtensionPlatform.getExtension().runtime.onMessage.addListener((request, sender, sendResponse) => {
     let {event = null, ...payload} = request;
 
     if (!event) {
