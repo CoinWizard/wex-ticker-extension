@@ -66,6 +66,7 @@ const updateTicker = (wexTickerKey, wexTickerData) => {
  */
 const formatTickerPrice = (price) => {
     let priceNumeral = Numeral(price);
+    
     if (price < 10) {
         return '' + priceNumeral.format('0.[00]');
     } else if (price < 100) {
@@ -73,9 +74,13 @@ const formatTickerPrice = (price) => {
     } else if (price < 1000) {
         return '' + priceNumeral.format('0,0.[0]');
     } else if (price < 10000) {
-        return '' + priceNumeral.format('0.0a');
+        return '' + priceNumeral.format('00');
+    } else if (price < 100000) {
+        return '' + priceNumeral.divide(1000).format('0.[0]');
     } else if (price < 1000000) {
-        return '' + priceNumeral.format('0a');
+        return '' + priceNumeral.divide(1000).format('00');
+    } else if (price < 10000000) {
+        return '' + priceNumeral.divide(1000000).format('0.[00]');
     }
 
     return '' + price;
@@ -159,3 +164,24 @@ const initBackground = () => {
 };
 
 document.addEventListener('DOMContentLoaded', initBackground);
+
+ExtensionPlatform.getExtension().contextMenus.removeAll();
+ExtensionPlatform.getExtension().contextMenus.create({
+    title: "by CoinWizard Team",
+    contexts: ["browser_action"],
+    onclick: () => {
+        ExtensionPlatform.getExtension().tabs.create({
+            url: "https://coinwizard.me?ref=wex-extension"
+        });
+    }
+});
+
+ExtensionPlatform.getExtension().contextMenus.create({
+    title: "Source code",
+    contexts: ["browser_action"],
+    onclick: () => {
+        ExtensionPlatform.getExtension().tabs.create({
+            url: "https://github.com/CoinWizard/wex-ticker-extension"
+        });
+    }
+});
