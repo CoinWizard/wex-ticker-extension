@@ -3,11 +3,13 @@ import Numeral from 'numeral';
 
 import {TickerInterface} from 'Core/Interfaces/TickerInterface';
 
+const fee = 0.002;
+
 export interface CurrentTickerViewPropsInterface {
     ticker: TickerInterface;
 }
 
-class CurrentTickerView extends React.Component<CurrentTickerViewPropsInterface, {}> {
+export default class CurrentTickerView extends React.Component<CurrentTickerViewPropsInterface, {}> {
 
     render() {
 
@@ -21,8 +23,14 @@ class CurrentTickerView extends React.Component<CurrentTickerViewPropsInterface,
             <div className="current-ticker">
                 <div className="current-ticker__bugged">
                     <label className="current-ticker__price">
-                        {Numeral(ticker.price).format(ticker.format)}
-                        <span className="current-ticker__price-currency">{ticker.quoteCurrency}</span>
+                        <span className="current-ticker__price-base">
+                            1 <span className="current-ticker__price-currency">{ticker.baseCurrency}</span>
+                        </span>
+                        <span className="current-ticker__price-separator">=</span>
+                        <span className="current-ticker__price-quote">
+                            {Numeral(ticker.price).format(ticker.format)}{' '}
+                            <span className="current-ticker__price-currency">{ticker.quoteCurrency}</span>
+                        </span>
                     </label>
 
                     <div className="current-ticker__market">
@@ -40,6 +48,9 @@ class CurrentTickerView extends React.Component<CurrentTickerViewPropsInterface,
                         <span className="current-ticker__info-value">
                             {Numeral(ticker.volume_base).format("0,0.[00]")}
                         </span>
+                        <div className="current-ticker__info-fee">
+                            24h fee: <b>{Numeral(ticker.volume_base * fee).format("0,0.[00]")}</b>
+                        </div>
                     </label>
 
                     <label className="current-ticker__info">
@@ -47,6 +58,9 @@ class CurrentTickerView extends React.Component<CurrentTickerViewPropsInterface,
                         <span className="current-ticker__info-value">
                             {Numeral(ticker.volume_quote).format("0,0.[00]")}
                         </span>
+                        <div className="current-ticker__info-fee">
+                            24h fee: <b>{Numeral(ticker.volume_quote * fee).format("0,0.[00]")}</b>
+                        </div>
                     </label>
 
 
@@ -69,5 +83,3 @@ class CurrentTickerView extends React.Component<CurrentTickerViewPropsInterface,
         );
     }
 }
-
-export default CurrentTickerView;
