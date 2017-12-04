@@ -23,7 +23,9 @@ export default class CurrentTickerView extends React.Component<CurrentTickerView
             <div className="current-ticker">
                 <div className="current-ticker__bugged">
                     <label className="current-ticker__price">
-                        <span className="current-ticker__price-base">{ticker.baseCurrency}</span>
+                        <span className="current-ticker__price-base">
+                        1<span className="current-ticker__price-currency">{ticker.baseCurrency}</span> 
+                        </span>
                         <span className="current-ticker__price-separator">=</span>
                         <span className="current-ticker__price-quote">
                             {Numeral(ticker.price).format(ticker.format)}
