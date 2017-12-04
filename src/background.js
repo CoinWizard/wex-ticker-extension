@@ -11,8 +11,8 @@ import Numeral from 'numeral';
 const TickerStorage = {};
 
 _.each(WexTickerMap, (ticker) => {
-    TickerStorage[ticker.key] = {
-        ...ticker,
+    TickerStorage[ticker.key] = Object.assign({}, {
+        token: false,
         price: 0,
         volume_base: 0,
         volume_quote: 0,
@@ -25,8 +25,8 @@ _.each(WexTickerMap, (ticker) => {
         depth: {
             bid: 0,
             ask: 0
-        }
-    };
+        } 
+    }, ticker)
 });
 
 let currentTickerKey = 'btc_usd';

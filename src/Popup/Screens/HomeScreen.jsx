@@ -60,6 +60,7 @@ class HomeScreen extends React.Component {
                         <div {...tickerListItemProps}>
                             <label className="ticker-list__item-name">
                                 {ticker.baseCurrency} / {ticker.quoteCurrency}
+                                { ticker.token ? <label className="ticker-list__item-name-token">token</label> : null}
                             </label>
                             <span className="ticker-list__item-price">
                                 {Numeral(ticker.price).format(ticker.format)} {ticker.quoteCurrency}
@@ -98,7 +99,7 @@ class HomeScreen extends React.Component {
                     {
                         currentTicker && (
                             <label {...currentMarketLabelProps}>
-                                {currentTicker.baseCurrency} / {currentTicker.quoteCurrency}
+                                {currentTicker.baseCurrency}/{currentTicker.quoteCurrency}
                             </label>
                         )
                     }

@@ -1,40 +1,47 @@
 .current-ticker {
 
     &__bugged {
-        padding: 24px 8px;
+        padding: 16px 8px;
+        background: #F8F9FC;
+        border: 1px solid #E6EAF5;
+        border-width: 1px 0;
     }
 
     &__price {
-        font-size: 24px;
+        font-size: 30px;
+        font-weight: 500;
         display: block;
         position: relative;
         width: 100%;
-        line-height: 24px;
+        line-height: 1;
 
         &-separator {
             display: inline-block;
-            margin: 0 8px;
+            margin: 0 4px;
         }
 
         &-currency {
             bottom: 0;
             margin-bottom: 3px;
-            font-size: 14px;
-            font-weight: 100;
+            margin-left: 2px;
+            font-weight: 400;
+            font-size: 16px;
+            color: $color-shuttle-gray;
         }
     }
 
     &__market {
         display: block;
-        line-height: 16px;
+        line-height: 14px;
+        margin-top: 4px;
         font-weight: 100;
         letter-spacing: 0.4px;
         &-link {
-            font-size: 10px;
-            color: $color-gull-gray;
+            font-size: 12px;
+            color: $color-shuttle-gray;
             text-decoration: none;
             &:hover {
-                color: darken($color-gull-gray, 10%);
+                color: darken($color-shuttle-gray, 10%);
             }
         }
     }
@@ -47,25 +54,27 @@
         display: inline-block;
         width: 50%;
         padding: 0;
-        margin-bottom: 16px;
+        margin-top: 16px;
 
         &-label {
             display: block;
-            color: $color-gull-gray;
+            color: $color-shuttle-gray;
             text-transform: uppercase;
-            font-size: 10px;
-            font-weight: 100;
-            letter-spacing: 0.8px;
+            font-size: 12px;
+            font-weight: 300;
+            margin-bottom: 2px;
         }
 
         &-value {
             font-size: 14px;
-            font-weight: 100;
-            letter-spacing: 0.8px;
+            font-weight: 500;
         }
 
         &-fee {
             font-size: 10px;
+            color: $color-shuttle-gray;
+            margin-top: 1px;
+            letter-spacing: 0.2px;
         }
     }
 }
@@ -96,7 +105,7 @@
         position: relative;
         padding: 8px;
         border-radius: 4px;
-        font-size: 12px;
+        font-size: 14px;
         margin-bottom: 2px;
         cursor: pointer;
         display: flex;
@@ -107,6 +116,15 @@
         }
 
         &-name {
+            &-token {
+                position: absolute;
+                left: 100%;
+                top: 0;
+                margin: -2px 0 0 3px;
+                font-size: 8px;
+                padding: 1px;
+                border-radius: 3px;
+            }
         }
 
         &-price {

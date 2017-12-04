@@ -1,9 +1,11 @@
 {
   "name": "wex-ticker-extension",
   "description": "Wex.nz Exchange Ticker Extension",
-  "version": "0.0.1",
+  "version": "0.3.3",
   "public": true,
-  "scripts": {},
+  "scripts": {
+    "prod": "NODE_ENV=production $(npm bin)/gulp build && $(npm bin)/gulp zip"
+  },
   "browserify": {
     "transform": [
       [
