@@ -19,6 +19,8 @@ export default class CurrentTickerView extends React.Component<CurrentTickerView
             return <div className="loading">Wait...</div>;
         }
 
+        const tickerUrl = ticker.token ? 'https://wex.nz/tokens' : 'https://wex.nz/exchange';
+
         return (
             <div className="current-ticker">
                 <div className="current-ticker__bugged">
@@ -35,7 +37,7 @@ export default class CurrentTickerView extends React.Component<CurrentTickerView
 
                     <div className="current-ticker__market">
                         <a
-                            href={`https://wex.nz/exchange/${ticker.key}?ref=coinwizard-wex-ticker`}
+                            href={`${tickerUrl}/${ticker.key}?ref=coinwizard-wex-ticker`}
                             className="current-ticker__market-link"
                             target="_blank"
                         >Market {ticker.baseCurrency}/{ticker.quoteCurrency}</a>
@@ -62,8 +64,6 @@ export default class CurrentTickerView extends React.Component<CurrentTickerView
                             24h fee: <b>{Numeral(ticker.volume_quote * fee).format("0,0.[00]")}</b>
                         </div>
                     </label>
-
-
 
                     <label className="current-ticker__info">
                         <span className="current-ticker__info-label">Low price</span>

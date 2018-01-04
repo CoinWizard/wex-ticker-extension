@@ -45,29 +45,49 @@ class HomeScreen extends React.Component {
         const {tickers = [], currentTickerKey = null} = this.props;
         const {selectMode = false} = this.state;
 
+
+        const groupedTickers = _.groupBy(tickers, (ticker) => {
+            return ticker.token ? 'token' : 'coin';
+        });
+
+        console.log(groupedTickers);
+
+        const drawTicker = (ticker) => {
+            const tickerListItemProps = {
+                key: ticker.key,
+                className: `ticker-list__item ${currentTickerKey === ticker.key ? '-active' : ''}`,
+                onClick: () => {
+                    this.onSelectMarket(ticker.key);
+                }
+            };
+
+            return (
+                <div {...tickerListItemProps}>
+                    <label className="ticker-list__item-name">{ticker.baseCurrency} / {ticker.quoteCurrency}</label>
+                    <span className="ticker-list__item-price">
+                        {Numeral(ticker.price).format(ticker.format)} {ticker.quoteCurrency}
+                    </span>
+                </div>
+            )
+        };
+
         return (
             <div className={`ticker-list ${selectMode ? '-active' : ''}`}>
-                {_.map(tickers, (ticker) => {
-                    const tickerListItemProps = {
-                        key: ticker.key,
-                        className: `ticker-list__item ${currentTickerKey === ticker.key ? '-active' : ''}`,
-                        onClick: () => {
-                            this.onSelectMarket(ticker.key);
-                        }
-                    };
-
+                {_.map(_.groupBy(groupedTickers['coin'], 'baseCurrency'), (groupedCoinTickers, baseKey) => {
                     return (
-                        <div {...tickerListItemProps}>
-                            <label className="ticker-list__item-name">
-                                {ticker.baseCurrency} / {ticker.quoteCurrency}
-                                { ticker.token ? <label className="ticker-list__item-name-token">token</label> : null}
-                            </label>
-                            <span className="ticker-list__item-price">
-                                {Numeral(ticker.price).format(ticker.format)} {ticker.quoteCurrency}
-                            </span>
+                        <div key={"group-" + baseKey} className="ticker-list-group">
+                            <h3 className="ticker-list-title">{baseKey}</h3>
+                            <div>{_.map(groupedCoinTickers, drawTicker)}</div>
                         </div>
-                    )
+                    );
                 })}
+
+                <div className="ticker-list-group">
+                    <h3 className="ticker-list-title">Tokens</h3>
+                    <div>
+                        {_.map(groupedTickers['token'], drawTicker)}
+                    </div>
+                </div>
             </div>
         )
     }
