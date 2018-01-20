@@ -1,7 +1,8 @@
 const TickerMap = {
 
-    // Base Tickers
-
+    /**
+     * Bitcoin
+     */
     btc_usd: {
         key: 'btc_usd',
         baseCurrency: 'BTC',
@@ -20,84 +21,10 @@ const TickerMap = {
         quoteCurrency: 'EUR',
         format: '0,0.[00]'
     },
-    ltc_btc: {
-        key: 'ltc_btc',
-        baseCurrency: 'LTC',
-        quoteCurrency: 'BTC',
-        format: '0,0.[00000]'
-    },
-    ltc_usd: {
-        key: 'ltc_usd',
-        baseCurrency: 'LTC',
-        quoteCurrency: 'USD',
-        format: '0,0.[00]'
-    },
-    ltc_rur: {
-        key: 'ltc_rur',
-        baseCurrency: 'LTC',
-        quoteCurrency: 'RUR',
-        format: '0,0.[00]'
-    },
-    ltc_eur: {
-        key: 'ltc_eur',
-        baseCurrency: 'LTC',
-        quoteCurrency: 'EUR',
-        format: '0,0.[00]'
-    },
-    nmc_btc: {
-        key: 'nmc_btc',
-        baseCurrency: 'NMC',
-        quoteCurrency: 'BTC',
-        format: '0,0.[00000]'
-    },
-    nmc_usd: {
-        key: 'nmc_usd',
-        baseCurrency: 'NMC',
-        quoteCurrency: 'USD',
-        format: '0,0.[00]'
-    },
-    nvc_btc: {
-        key: 'nvc_btc',
-        baseCurrency: 'NVC',
-        quoteCurrency: 'BTC',
-        format: '0,0.[00000]'
-    },
-    nvc_usd: {
-        key: 'nvc_usd',
-        baseCurrency: 'NVC',
-        quoteCurrency: 'USD',
-        format: '0,0.[0000]'
-    },
-    usd_rur: {
-        key: 'usd_rur',
-        baseCurrency: 'USD',
-        quoteCurrency: 'RUR',
-        format: '0,0.[00]'
-    },
-    eur_usd: {
-        key: 'eur_usd',
-        baseCurrency: 'EUR',
-        quoteCurrency: 'USD',
-        format: '0,0.[0000]'
-    },
-    eur_rur: {
-        key: 'eur_rur',
-        baseCurrency: 'EUR',
-        quoteCurrency: 'RUR',
-        format: '0,0.[00]'
-    },
-    ppc_btc: {
-        key: 'ppc_btc',
-        baseCurrency: 'PPC',
-        quoteCurrency: 'BTC',
-        format: '0,0.[000000]'
-    },
-    ppc_usd: {
-        key: 'ppc_usd',
-        baseCurrency: 'PPC',
-        quoteCurrency: 'USD',
-        format: '0,0.[00]'
-    },
+
+    /**
+     * DASH
+     */
     dsh_btc: {
         key: 'dsh_btc',
         baseCurrency: 'DASH',
@@ -134,11 +61,27 @@ const TickerMap = {
         quoteCurrency: 'ETH',
         format: '0,0.[0000]'
     },
+    dsh_zec: {
+        key: 'dsh_zec',
+        baseCurrency: 'DASH',
+        quoteCurrency: 'ZEC',
+        format: '0,0.[0000]'
+    },
+
+    /**
+     * Ethereum
+     */
     eth_btc: {
         key: 'eth_btc',
         baseCurrency: 'ETH',
         quoteCurrency: 'BTC',
         format: '0,0.[00000]'
+    },
+    eth_ltc: {
+        key: 'eth_ltc',
+        baseCurrency: 'ETH',
+        quoteCurrency: 'LTC',
+        format: '0,0.[0000]'
     },
     eth_usd: {
         key: 'eth_usd',
@@ -152,17 +95,147 @@ const TickerMap = {
         quoteCurrency: 'EUR',
         format: '0,0.[00]'
     },
-    eth_ltc: {
-        key: 'eth_ltc',
-        baseCurrency: 'ETH',
-        quoteCurrency: 'LTC',
-        format: '0,0.[0000]'
-    },
     eth_rur: {
         key: 'eth_rur',
         baseCurrency: 'ETH',
         quoteCurrency: 'RUR',
         format: '0,0.[00]'
+    },
+    eth_zec: {
+        key: 'eth_zec',
+        baseCurrency: 'ETH',
+        quoteCurrency: 'ZEC',
+        format: '0,0.[0000]'
+    },
+
+    /**
+     * NameCoin
+     */
+    nmc_btc: {
+        key: 'nmc_btc',
+        baseCurrency: 'NMC',
+        quoteCurrency: 'BTC',
+        format: '0,0.[00000]'
+    },
+    nmc_usd: {
+        key: 'nmc_usd',
+        baseCurrency: 'NMC',
+        quoteCurrency: 'USD',
+        format: '0,0.[00]'
+    },
+
+    /**
+     * NovaCoin
+     */
+    nvc_btc: {
+        key: 'nvc_btc',
+        baseCurrency: 'NVC',
+        quoteCurrency: 'BTC',
+        format: '0,0.[00000]'
+    },
+    nvc_usd: {
+        key: 'nvc_usd',
+        baseCurrency: 'NVC',
+        quoteCurrency: 'USD',
+        format: '0,0.[0000]'
+    },
+
+
+    usd_rur: {
+        key: 'usd_rur',
+        baseCurrency: 'USD',
+        quoteCurrency: 'RUR',
+        format: '0,0.[00]'
+    },
+    eur_usd: {
+        key: 'eur_usd',
+        baseCurrency: 'EUR',
+        quoteCurrency: 'USD',
+        format: '0,0.[0000]'
+    },
+    eur_rur: {
+        key: 'eur_rur',
+        baseCurrency: 'EUR',
+        quoteCurrency: 'RUR',
+        format: '0,0.[00]'
+    },
+
+    /**
+     * PPC
+     */
+    ppc_btc: {
+        key: 'ppc_btc',
+        baseCurrency: 'PPC',
+        quoteCurrency: 'BTC',
+        format: '0,0.[000000]'
+    },
+    ppc_usd: {
+        key: 'ppc_usd',
+        baseCurrency: 'PPC',
+        quoteCurrency: 'USD',
+        format: '0,0.[00]'
+    },
+
+    /**
+     * Litecoin
+     */
+    ltc_btc: {
+        key: 'ltc_btc',
+        baseCurrency: 'LTC',
+        quoteCurrency: 'BTC',
+        format: '0,0.[00000]'
+    },
+    ltc_usd: {
+        key: 'ltc_usd',
+        baseCurrency: 'LTC',
+        quoteCurrency: 'USD',
+        format: '0,0.[00]'
+    },
+    ltc_rur: {
+        key: 'ltc_rur',
+        baseCurrency: 'LTC',
+        quoteCurrency: 'RUR',
+        format: '0,0.[00]'
+    },
+    ltc_eur: {
+        key: 'ltc_eur',
+        baseCurrency: 'LTC',
+        quoteCurrency: 'EUR',
+        format: '0,0.[00]'
+    },
+
+    /**
+     * Bitcoin Cash
+     */
+    bch_btc: {
+        key: 'bch_btc',
+        baseCurrency: 'BCH',
+        quoteCurrency: 'BTC',
+        format: '0,0.[0000]'
+    },
+    bch_dsh: {
+        key: 'bch_dsh',
+        baseCurrency: 'BCH',
+        quoteCurrency: 'DASH',
+        format: '0,0.[0000]'
+    },
+    bch_eth: {
+        key: 'bch_eth',
+        baseCurrency: 'BCH',
+        quoteCurrency: 'ETH',
+        format: '0,0.[0000]'
+    },
+    bch_ltc: {
+        key: 'bch_ltc',
+        baseCurrency: 'BCH',
+        quoteCurrency: 'LTC',
+        format: '0,0.[0000]'
+    },
+    bch_zec: {
+        key: 'bch_zec',
+        baseCurrency: 'BCH',
+        quoteCurrency: 'ZEC',
+        format: '0,0.[0000]'
     },
     bch_usd: {
         key: 'bch_usd',
@@ -170,12 +243,22 @@ const TickerMap = {
         quoteCurrency: 'USD',
         format: '0,0.[00]'
     },
-    bch_btc: {
-        key: 'bch_btc',
+    bch_eur: {
+        key: 'bch_eur',
         baseCurrency: 'BCH',
-        quoteCurrency: 'BTC',
-        format: '0,0.[0000]'
+        quoteCurrency: 'EUR',
+        format: '0,0.[00]'
     },
+    bch_rur: {
+        key: 'bch_rur',
+        baseCurrency: 'BCH',
+        quoteCurrency: 'RUR',
+        format: '0,0.[00]'
+    },
+
+    /**
+     * ZEC
+     */
     zec_btc: {
         key: 'zec_btc',
         baseCurrency: 'ZEC',
@@ -188,6 +271,16 @@ const TickerMap = {
         quoteCurrency: 'USD',
         format: '0,0.[00]'
     },
+    zec_ltc: {
+        key: 'zec_ltc',
+        baseCurrency: 'ZEC',
+        quoteCurrency: 'LTC',
+        format: '0,0.[0000]'
+    },
+
+    /**
+     * WEX Tokens
+     */
     usdet_usd: {
         key: 'usdet_usd',
         baseCurrency: 'USDET',
