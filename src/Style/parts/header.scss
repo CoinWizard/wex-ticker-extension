@@ -1,12 +1,10 @@
 .header {
     padding: 0 10px;
-    height: 50px;
+    height: 44px;
     background: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    border-bottom: 1px solid $color-alto;
 
     &__logo {
         display: block;
@@ -22,7 +20,8 @@
         padding: 0 22px 0 8px;
         border-radius: 4px;
         font-size: 14px;
-        color: $color-shuttle-gray;
+        font-weight: 400;
+        color: $color-dark-gray;
 
         &:after {
             border-style: solid;

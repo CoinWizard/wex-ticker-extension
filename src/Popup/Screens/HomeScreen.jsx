@@ -1,8 +1,7 @@
 import React from 'react';
 import store from 'Popup/Store/index';
 import {connect} from 'react-redux';
-import * as _ from 'lodash';
-import Numeral from 'numeral';
+import {} from 'lodash';
 
 import ExtensionPlatform from 'Core/Extension';
 import {Events} from 'Core/EventProtocol/Events';
@@ -11,6 +10,8 @@ import {TickerActions} from 'Popup/Actions/TickerActions';
 import CurrentTickerView from 'Popup/Screens/HomeViews/CurrentTickerView';
 
 const currentExtension = ExtensionPlatform.getExtension().runtime;
+
+import TickerList from './HomeViews/TickerList';
 
 class HomeScreen extends React.Component {
 
@@ -28,49 +29,6 @@ class HomeScreen extends React.Component {
         });
     }
 
-    onSelectMarket = (tickerKey) => {
-        const request = {
-            event: Events.SET_CURRENT_TICKER,
-            tickerKey: tickerKey
-        };
-
-        currentExtension.sendMessage(request, (response) => {
-            store.dispatch(TickerActions.setCurrentTickerKey(tickerKey));
-        });
-
-        this.setState({selectMode: false});
-    };
-
-    drawTickerList() {
-        const {tickers = [], currentTickerKey = null} = this.props;
-        const {selectMode = false} = this.state;
-
-        return (
-            <div className={`ticker-list ${selectMode ? '-active' : ''}`}>
-                {_.map(tickers, (ticker) => {
-                    const tickerListItemProps = {
-                        key: ticker.key,
-                        className: `ticker-list__item ${currentTickerKey === ticker.key ? '-active' : ''}`,
-                        onClick: () => {
-                            this.onSelectMarket(ticker.key);
-                        }
-                    };
-
-                    return (
-                        <div {...tickerListItemProps}>
-                            <label className="ticker-list__item-name">
-                                {ticker.baseCurrency} / {ticker.quoteCurrency}
-                            </label>
-                            <span className="ticker-list__item-price">
-                                {Numeral(ticker.price).format(ticker.format)} {ticker.quoteCurrency}
-                            </span>
-                        </div>
-                    )
-                })}
-            </div>
-        )
-    }
-
     render() {
         const {tickers = [], currentTickerKey = null} = this.props;
 
@@ -85,7 +43,12 @@ class HomeScreen extends React.Component {
 
         return (
             <div>
-                {this.drawTickerList()}
+                <TickerList
+                    currentTickerKey={currentTickerKey}
+                    tickers={tickers}
+                    selectMode={this.state.selectMode}
+                    onSelect={() => this.setState({selectMode: false})}
+                />
 
                 <header className="header">
                     <a href="https://wex.nz/?ref=coinwizard-wex-ticker"
@@ -98,7 +61,7 @@ class HomeScreen extends React.Component {
                     {
                         currentTicker && (
                             <label {...currentMarketLabelProps}>
-                                {currentTicker.baseCurrency} / {currentTicker.quoteCurrency}
+                                {currentTicker.baseCurrency}/{currentTicker.quoteCurrency}
                             </label>
                         )
                     }

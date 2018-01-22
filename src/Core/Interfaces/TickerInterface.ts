@@ -19,6 +19,8 @@ export interface TickerInterface {
     OHLC: OHLCInterface;
     depth: DepthInterface;
 
+    token: boolean;
+
     price?: number;
     volume_base?: number;
     volume_quote?: number;

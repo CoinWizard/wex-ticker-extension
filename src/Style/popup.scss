@@ -3,18 +3,19 @@
 @import "cleaner";
 
 html {
-    width: 300px;
-    max-width: 300px;
+    width: 310px;
+    max-width: 310px;
 }
 
 body {
-    width: 300px;
-    height: 255px;
+    width: 310px;
+    height: 270px;
     overflow: hidden;
     font-size: 16px;
     background: white;
     color: $color-dark-gray;
     font-family: $font;
+    font-weight: 300;
 }
 
 @import "parts/header";
@@ -26,7 +27,6 @@ body {
     right: 8px;
     bottom: 4px;
     z-index: 1000;
-    font-weight: 100;
     color: rgb(220, 220, 220);
 
     a {

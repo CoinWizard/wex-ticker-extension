@@ -34,9 +34,3 @@ const calculateVolumes = () => {
         })
     })
 };
-
-calculateVolumes().then((volumes) => {
-    _.each(volumes, (volume, key) => {
-        console.log(key, volume, volume * fee)
-    })
-});

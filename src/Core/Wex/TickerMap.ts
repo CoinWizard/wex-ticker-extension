@@ -285,67 +285,78 @@ const TickerMap = {
         key: 'usdet_usd',
         baseCurrency: 'USDET',
         quoteCurrency: 'USD',
-        format: '0,0.[000]'
+        format: '0,0.[000]',
+        token: true
     },
     ruret_rur: {
         key: 'ruret_rur',
         baseCurrency: 'RURET',
         quoteCurrency: 'RUR',
-        format: '0,0.[000]'
+        format: '0,0.[000]',
+        token: true
     },
     euret_eur: {
         key: 'euret_eur',
         baseCurrency: 'EURET',
         quoteCurrency: 'EUR',
-        format: '0,0.[000]'
+        format: '0,0.[000]',
+        token: true
     },
     btcet_btc: {
         key: 'btcet_btc',
         baseCurrency: 'BTCET',
         quoteCurrency: 'BTC',
-        format: '0,0.[000]'
+        format: '0,0.[000]',
+        token: true
     },
     ltcet_ltc: {
         key: 'ltcet_ltc',
         baseCurrency: 'LTCET',
         quoteCurrency: 'LTC',
-        format: '0,0.[000]'
+        format: '0,0.[000]',
+        token: true
     },
     ethet_eth: {
         key: 'ethet_eth',
         baseCurrency: 'ETHET',
         quoteCurrency: 'ETH',
-        format: '0,0.[000]'
+        format: '0,0.[000]',
+        token: true
     },
     nmcet_nmc: {
         key: 'nmcet_nmc',
         baseCurrency: 'NMCET',
         quoteCurrency: 'NMC',
-        format: '0,0.[000]'
+        format: '0,0.[000]',
+        token: true
     },
     nvcet_nvc: {
         key: 'nvcet_nvc',
         baseCurrency: 'NVCET',
         quoteCurrency: 'NVC',
-        format: '0,0.[000]'
+        format: '0,0.[000]',
+        token: true
     },
     ppcet_ppc: {
         key: 'ppcet_ppc',
         baseCurrency: 'PPCET',
         quoteCurrency: 'PPC',
-        format: '0,0.[000]'
+        format: '0,0.[000]',
+        token: true
     },
     dshet_dsh: {
         key: 'dshet_dsh',
         baseCurrency: 'DSHET',
         quoteCurrency: 'DASH',
-        format: '0,0.[000]'
+        format: '0,0.[000]',
+        token: true
     },
     bchet_bch: {
         key: 'bchet_bch',
         baseCurrency: 'BCHET',
         quoteCurrency: 'BCH',
-        format: '0,0.[000]'
+        format: '0,0.[000]',
+        token: true
     }
 };
 
