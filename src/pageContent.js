@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 import ExtensionPlatform from 'Core/Extension';
 import {Events} from 'Core/EventProtocol/Events';
+import {sendEvent} from 'Popup/Analytics';
 
 const currentExtension = ExtensionPlatform.getExtension().runtime;
 
@@ -34,3 +35,13 @@ const calculateVolumes = () => {
         })
     })
 };
+
+sendEvent('frame', 'open', window.location.host, null, (err) => {
+    if (err) {
+        console.error('Something happend!')
+        console.error(err);
+        return;
+    }
+
+    console.log('success!');
+});

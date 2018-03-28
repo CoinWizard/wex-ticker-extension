@@ -19,7 +19,16 @@ if (!visitorUUID) {
     localStorage.set(USER_UUID_KEY, visitorUUID);
 }
 
-const visitor = UniversalAnalytics(GA_IDENTIFY, visitorUUID, {https: true});
-visitor.screenview("WEX / Popup", APPLICATION_NAME, DISPLAYED_VERSION).send();
+export const visitor = UniversalAnalytics(GA_IDENTIFY, visitorUUID, {https: true});
 
-export default visitor;
+export const sendScreenView = (pageTitle) => {
+    visitor.screenview(pageTitle, APPLICATION_NAME, DISPLAYED_VERSION).send();
+};
+
+export const sendEvent = (eventCategory, eventAction, eventLabel, eventValue, callback) => {
+    visitor.event(eventCategory, eventAction, eventLabel, eventValue, callback).send();
+};
+
+export const sendTickerScreenView = () => {
+    sendScreenView(`WEX / Popup`);
+};

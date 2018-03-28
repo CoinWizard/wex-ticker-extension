@@ -1,4 +1,4 @@
-# Chrome Extension for [Wex.nz](https://wex.nz/?ref=coinwizard-wex-ticker) Cryptocurrency Exchange
+# Chrome Extension for [Wex.nz](https://wex.nz/?utm_source=github&utm_medium=readme&utm_campaign=WEX_Ticker_Extension) Cryptocurrency Exchange
 
 ---
 
