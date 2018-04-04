@@ -20,7 +20,6 @@ export default class CurrentTickerView extends React.Component<CurrentTickerView
         }
 
         const tickerUrl = ticker.token ? 'https://wex.nz/tokens' : 'https://wex.nz/exchange';
-        const utmPostfix = "utm_source=extension&utm_medium=ticker&utm_campaign=WEX_Ticker_Extension";
 
         return (
             <div className="current-ticker">
@@ -37,7 +36,7 @@ export default class CurrentTickerView extends React.Component<CurrentTickerView
                     </label>
 
                     <div className="current-ticker__market">
-                        <a href={`${tickerUrl}/${ticker.key}?${utmPostfix}`}
+                        <a href={`${tickerUrl}/${ticker.key}?src=WEX_Ticker_Extension`}
                            className="current-ticker__market-link"
                            target="_blank"
                         >Market {ticker.baseCurrency}/{ticker.quoteCurrency}</a>

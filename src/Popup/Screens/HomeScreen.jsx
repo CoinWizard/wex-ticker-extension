@@ -51,7 +51,7 @@ class HomeScreen extends React.Component {
                 />
 
                 <header className="header">
-                    <a href="https://wex.nz/?utm_source=extension&utm_medium=Header&utm_campaign=WEX_Ticker_Extension"
+                    <a href="https://wex.nz/?src=WEX_Ticker_Extension"
                        target="_blank"
                        className="header__logo"
                        title="WEX.NZ Exchange"

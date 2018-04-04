@@ -170,7 +170,7 @@ ExtensionPlatform.getExtension().contextMenus.create({
     contexts: ["browser_action"],
     onclick: () => {
         ExtensionPlatform.getExtension().tabs.create({
-            url: "https://coinwizard.me?ref=wex-extension"
+            url: "https://coinwizard.me?src=WEX_Ticker_Extension"
         });
     }
 });
